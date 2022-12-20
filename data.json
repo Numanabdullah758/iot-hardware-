@@ -1,0 +1,42 @@
+{
+    "PROJECT_NAME": "IOT synavos",
+    "AUTO": true,
+    "WATER_TANK": {
+        "WATER_TANK_HEIGHT": 70,
+        "WATER_TANK_RADIUS": 20
+    },
+
+    "WIFI": {
+        "SSID": "Synavos-Guest GF",
+        "PASSWORD": "Syn@vos!!"
+    },
+
+    "HOTSPOT": {
+        "SSID": "MicroPython-AP_esp32",
+        "PASSWORD": "Project911"
+    },
+    
+    "PUMP_RANGE": {
+        "PUMP_ON_RANGE": {
+            "LOW": 0,
+            "HIGH": 21
+        },
+        "PUMP_OFF_RANGE": {
+            "LOW": 90,
+            "HIGH": 101
+        }
+    },
+    
+    "ALARM_RANGE": {
+        "ALARM_ON_RANGE_LOW": {
+            "LOW": 0,
+            "HIGH": 11
+        },
+        "ALARM_ON_RANGE_FULL": {
+            "LOW": 95,
+            "HIGH": 101
+        }
+    },
+
+}
+
