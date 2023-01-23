@@ -7,8 +7,8 @@
     },
 
     "WIFI": {
-        "SSID": "Synavos-Guest GF",
-        "PASSWORD": "Syn@vos!!"
+        "SSID": "IOT-Synavos",
+        "PASSWORD": "Syn@vos!!911"
     },
 
     "HOTSPOT": {
@@ -39,4 +39,3 @@
     },
 
 }
-

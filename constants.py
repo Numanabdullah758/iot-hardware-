@@ -11,4 +11,3 @@ JSN_ECHO_PIN = 18
 # ----- value in micro second-----
 JSN_ECHO_TIMEOUT = 10000
 
-

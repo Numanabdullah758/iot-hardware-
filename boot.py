@@ -43,8 +43,7 @@ with open("data.json", "r") as jsonFile:
 #     print("data : ", data)
 #     print("_________________________________")
 
-    
-    
+
     PROJECT_NAME = data['PROJECT_NAME']
     AUTO = data['AUTO']
     

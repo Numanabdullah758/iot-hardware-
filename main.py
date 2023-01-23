@@ -5,7 +5,11 @@ alarm = None
 timer = Timer(0)
 
 def closeAlarm(timer):
+    global alarm
     relay2.value(not False)
+    alarm = False
+    
+    
     
 timer.init(period=60000, mode=Timer.PERIODIC, callback=closeAlarm)
 # ------------------------------------------------------------------------
@@ -37,6 +41,7 @@ def alarm_sys(water_level):
         relay2.value(not True)  # alarm
         alarm = True
         
+        
 # --------------------------------------------------------------------
 
 
@@ -62,6 +67,8 @@ def water_tank_sensor():
         output["water_vol_ltr"] = "error"
 
     return output
+
+
 # --------------------------------------------------------------------
 
 
@@ -77,25 +84,42 @@ while True:
     
 #     print("_________________________________")
 #     print("data : ", data)
-    print(PUMP_ON_RANGE)
-    print(PUMP_OFF_RANGE)
-    print(ALARM_ON_RANGE_FULL)
-    print(ALARM_ON_RANGE_LOW)
+#     print(PUMP_ON_RANGE)
+#     print(PUMP_OFF_RANGE)
+#     print(ALARM_ON_RANGE_FULL)
+#     print(ALARM_ON_RANGE_LOW)
 #     print("_________________________________")
 
     conn, addr = server_socket.accept()
     
+    request = conn.recv(1024)
+    request = str(request)
+    print(request)
+    
+    if "waterPumpON" in request:
+        relay1.value(not True)  # water pump
+        water_pump = True
+    elif "waterPumpOFF" in request:
+        relay1.value(not False)  # water pump
+        water_pump = False
+    
+        
+    
     data = {}
     data["sensor_reading"]= water_tank_sensor()
-    print(data["sensor_reading"]["water_lvl_pct"])
-#     alarm_sys(data["sensor_reading"]["water_lvl_pct"])
+    alarm_sys(data["sensor_reading"]["water_lvl_pct"])
     data["water_pump"] = water_pump
     data["alarm"] = alarm
-    
     data_json = json.dumps(data)
+    
     
     
     conn.send(data_json)
     conn.close()
-
+#     print(data["sensor_reading"]["water_lvl_pct"])
+#     alarm_sys(data["sensor_reading"]["water_lvl_pct"])
+    
+    
+    
+    
 
